@@ -1,4 +1,4 @@
-use j4rs_sanitizer_example::run_java::init_naive_jvm;
+use j4rs_sanitizer_example::run_java::init_jvm;
 fn main() {
-    let jvm = init_naive_jvm();
+    let _ = init_jvm();
 }
