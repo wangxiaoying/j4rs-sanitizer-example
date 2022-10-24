@@ -3,13 +3,13 @@ use std::convert::TryFrom;
 use std::fs;
 
 pub fn init_naive_jvm() -> Jvm {
-    JvmBuilder::new().build().unwrap()
+    JvmBuilder::new().skip_setting_native_lib().build().unwrap()
 }
 
 pub fn init_jvm() -> Jvm {
     let path = fs::canonicalize("./test.jar").unwrap();
     let entry = ClasspathEntry::new(path.to_str().unwrap());
-    JvmBuilder::new().classpath_entry(entry).build().unwrap()
+    JvmBuilder::new().skip_setting_native_lib().classpath_entry(entry).build().unwrap()
 }
 
 pub fn run_java(in_str: &str) {
