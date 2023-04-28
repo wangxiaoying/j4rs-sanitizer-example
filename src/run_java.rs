@@ -1,9 +1,11 @@
 use j4rs::{ClasspathEntry, InvocationArg, Jvm, JvmBuilder};
 use std::convert::TryFrom;
 use std::fs;
+use std::env;
 
 pub fn init_naive_jvm() -> Jvm {
-    JvmBuilder::new().skip_setting_native_lib().build().unwrap()
+	let j4rs_base = env::var("J4RS_BASE_PATH").unwrap_or("/root/j4rs-sanitizer-example/target/debug".to_string());
+    JvmBuilder::new().skip_setting_native_lib().with_base_path(j4rs_base.as_str()).build().unwrap()
 }
 
 pub fn init_jvm() -> Jvm {
